@@ -1,0 +1,33 @@
+{
+  "name": "couchdb-fauxton-server",
+  "version": "1.0.0",
+  "description": "Server component to serve Fauxton",
+  "main": "lib/index.js",
+  "bin": {
+    "fauxton": "./bin/fauxton"
+  },
+  "scripts": {
+    "stylecheck": "eslint --ext=js .",
+    "test": "npm run stylecheck"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git-wip-us.apache.org/repos/asf/couchdb-fauxton-server.git"
+  },
+  "keywords": [
+    "couchdb",
+    "futon",
+    "couch",
+    "nosql",
+    "fauxton"
+  ],
+  "author": "The Apache CouchDB contributors",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "http-proxy": "^1.14.0",
+    "lodash": "^3.0.0",
+    "optimist": "^0.6.1",
+    "rockofauxton": "*",
+    "send": "^0.14.1"
+  }
+}

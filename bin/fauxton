@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+
+var path = require('path');
+
+var bootServer = require('../lib/server.js');
+var fauxtonEntry = require.resolve('fauxton');
+var fauxtonDir = path.dirname(fauxtonEntry);
+
+var optimist = require('optimist')
+  .usage('Fauxton server \nUsage: $0')
+  .options('couchdb', {
+    alias: 'c',
+    default: 'http://localhost:5984',
+    describe: 'Url to your CouchDB instance'
+  })
+  .options('port', {
+    alias: 'p',
+    default: 8000,
+    describe: 'Local port that Fauxton will run on'
+  })
+  .options('fauxton', {
+    alias: 'd',
+    default: fauxtonDir,
+    describe: 'Path to fauxton'
+  })
+  .options('help', {
+    alias: 'h',
+    describe: 'Show this message'
+  })
+  .options('contentSecurityPolicy', {
+    alias: 'csp',
+    default: true,
+    describe: 'Configure the content security policy'
+  });
+
+var argv = optimist.argv;
+
+if (argv.help || argv.h) {
+  return optimist.showHelp(console.log);
+}
+
+bootServer(argv);
